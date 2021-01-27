@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_archive">
+    <sys_archive action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <auto_rearchive>false</auto_rearchive>
+        <auto_rearchive_duration/>
+        <condition table="x_snc_createnotes_note">userISEMPTY^EQ<item endquery="false" field="user" goto="false" newquery="false" operator="ISEMPTY" or="false" value=""/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </condition>
+        <description/>
+        <estimate_date>2021-01-13 09:00:30</estimate_date>
+        <last_run_date>2021-01-13 09:00:30</last_run_date>
+        <name>test</name>
+        <next_run_date/>
+        <parent/>
+        <record_estimate>0</record_estimate>
+        <sys_class_name>sys_archive</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-13 09:11:59</sys_created_on>
+        <sys_id>50cdc4eedbe69c108134de06f49619dc</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>test</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sys_archive_50cdc4eedbe69c108134de06f49619dc</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-01-13 09:11:06</sys_updated_on>
+        <table>x_snc_createnotes_note</table>
+        <total>20</total>
+    </sys_archive>
+</record_update>

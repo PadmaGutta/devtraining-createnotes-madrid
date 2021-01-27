@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <name>Test Catalog APIs</name>
+        <offset/>
+        <offset_type/>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2020-09-02 07:47:29</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[//Create a Catalog
+var cart=new sn_sc.CatItem();
+cart.setAttributes({"name":"Test BT Cat DEF",
+"active": true,
+"short_description":"This Catalog is used to test BT app catalog definations"});
+cart.setCatalogs("e0d08b13c3330100c8b837659bba8fb4");
+cart.setCategories("95fc11615f1211001c9b2572f2b477c6");
+cart.create();
+
+//create a variable
+
+var variableSet = new sn_sc.CatalogItemVariable();
+variableSet.setAttributes({"cat_item":"4389faf8db0b18108134de06f496194d",
+"type":"3",
+"name": "choice2",
+"question_text":"choice2",
+"include_none": true,
+"active":true
+});
+variableSet.create();
+
+//update a variable
+var variable = new sn_sc.CatalogItemVariable("47cebafcdb0b18108134de06f4961972");
+variable.update({"type":"3"});
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-09-02 07:48:03</sys_created_on>
+        <sys_id>785a763cdb0b18108134de06f49619ff</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Test Catalog APIs</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sysauto_script_785a763cdb0b18108134de06f49619ff</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-09-02 08:27:35</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

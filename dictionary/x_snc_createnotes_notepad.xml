@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="notepad" max_length="40" name="x_snc_createnotes_notepad" sizeclass="21" type="collection">
+        <element label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="id" max_length="40" name="id" type="string"/>
+        <element label="note" max_length="40" name="note" type="string"/>
+        <element label="Note ref" max_length="32" name="note_ref" reference="x_snc_createnotes_note" type="reference"/>
+        <element default="javascript:gs.getUserID();" dynamic_default_value="2fd8e97bef3221002841f7f775c0fbc1" label="requested for" max_length="32" name="requested_for" reference="sys_user" type="reference" use_dynamic_default="true"/>
+        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Open" sequence="100" value="100"/>
+                <element inactive_on_update="false" label="In Progress" sequence="200" value="200"/>
+                <element inactive_on_update="false" label="Submitted" sequence="300" value="300"/>
+                <element inactive_on_update="false" label="On-hold" sequence="400" value="400"/>
+                <element inactive_on_update="false" label="Completed" sequence="500" value="500"/>
+            </choice>
+        </element>
+        <element label="useful" max_length="40" name="useful" type="string"/>
+        <index name="index">
+            <element name="note_ref"/>
+        </index>
+        <index name="index2">
+            <element name="requested_for"/>
+        </index>
+    </element>
+</database>

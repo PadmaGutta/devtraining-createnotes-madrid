@@ -1,11 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<database>
-    <element label="Note" max_length="40" name="x_snc_createnotes_note" type="collection">
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Note" max_length="40" name="x_snc_createnotes_note" sizeclass="26" type="collection">
+        <element label="Choose Target" max_length="80" name="choose_target" type="table_name"/>
+        <element attributes="encode_utf8=false" label="Incident" max_length="32" name="incident" reference="incident" type="reference"/>
         <element default="Enter notes here" label="Note" max_length="4000" name="note" type="string"/>
-        <element default="javascript:getNextObjNumberPadded();" display="true" dynamic_default_value="fdcb83a85f220100a9ad2572f2b4773c" label="Number" max_length="40" name="number" type="string" use_dynamic_default="true"/>
+        <element default="javascript:getNextObjNumberPadded();" display="true" dynamic_default_value="fdcb83a85f220100a9ad2572f2b4773c" label="Number" max_length="40" name="number" type="string" unique="true" use_dynamic_default="true"/>
+        <element label="Property val store" max_length="255" name="property_val_store" type="password2"/>
+        <element label="Script" max_length="8000" name="script" type="script"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="State" max_length="40" name="state" type="string">
+            <choice>
+                <element inactive_on_update="false" label="New" sequence="0" value="New"/>
+                <element inactive_on_update="false" label="Hold" sequence="1" value="Hold"/>
+                <element inactive_on_update="false" label="Complete" sequence="2" value="Complete"/>
+                <element inactive_on_update="false" label="Progress" sequence="3" value="Progress"/>
+            </choice>
+        </element>
         <element default="New Note" label="Title" max_length="100" name="title" type="string"/>
         <element label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
         <index name="index">
+            <element name="number"/>
+        </index>
+        <index name="index2">
+            <element name="incident"/>
+        </index>
+        <index name="index3">
             <element name="user"/>
         </index>
     </element>

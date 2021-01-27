@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <before>false</before>
+        <description>Scoped Equivalent for GlideNumberManager</description>
+        <flush_cache>false</flush_cache>
+        <name>Fix Tour ID - Scoped Equivqlent for Glid</name>
+        <record_for_rollback>false</record_for_rollback>
+        <run_once>true</run_once>
+        <script><![CDATA[//initialize variables
+var count = 1;
+var answer = '';
+var cnumber,ndigits,prefix,inNumber,numLength; 
+
+var gr = new GlideRecord('sys_embedded_tour_guide');
+//gr.query('tour_id', 'TOUR0000002'); //tour_id=NULL
+gr.orderByDesc('tour_id');
+gr.query();
+if(gr.next()){
+  gs.info(gr.tour_id);
+
+var gr1 = new GlideRecord("sys_number");
+gr1.addQuery("category", "sys_embedded_tour_guide"); //category=sys_embedded_tour_guide
+gr1.query();
+if(gr1.next()){
+ cnumber = gr1.number;
+ ndigits = gr1.maximum_digits;
+prefix = gr1.prefix;
+	
+gs.info("number::"+ cnumber + "::Digists::"+ ndigits + "::prefix::"+ prefix);
+
+var gr2 = new GlideRecord('sys_number_counter');
+gr2.addQuery('table','sys_embedded_tour_guide');
+gr2.query();
+if(gr2.next()){
+inNumber = gr2.number;
+numLength = inNumber.toString().length;
+gs.info("counterbase::"+ inNumber + "::length::"+ numLength);
+
+
+while(numLength < ndigits){
+answer = "0"+answer;
+numLength++;
+}
+gs.info("result::"+ prefix+answer+Number(inNumber+1));
+}
+else{
+while(count < ndigits){
+answer = "0"+answer;
+count++;
+}
+gs.info("result::"+ prefix+answer+1);
+}
+}
+	else
+		gs.info("Numbering is not enabled");
+} 
+
+else
+	gs.info("No Tours Available");
+
+
+
+
+/* var gr = new GlideRecord('sys_embedded_tour_guide');
+//gr.query('tour_id', 'TOUR');
+gr.orderByDesc('tour_id');
+gr.query();
+if (gr.next()) {
+   var meta = gr.sys_meta.name;
+    var answer = null;
+    var hier = new GlideTableHierarchy(meta).getTables();
+	gs.info("heir"+ hier);
+    for (var i = 0; i < hier.length; i++) {
+		gs.info("get::" + hier[i]);
+        answer = getNextNumber(hier[i]);
+		
+        if (answer != null) {
+            gs.info(answer);
+            break;
+        }
+    } 
+ gs.info(tour_id);
+	gr.tour_id = answer;
+	gs.info("tour" + gr.tour_id);
+//	gr.update();
+}
+
+  // get the next number for a particular category
+   function getNextNumber(category) {  
+    var answer = GlideNumberManager.getNumber(category);
+    return answer;
+  } */
+]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-09-17 07:02:04</sys_created_on>
+        <sys_id>404ffba1db5754508134de06f4961930</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Fix Tour ID - Scoped Equivqlent for Glid</sys_name>
+        <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
+        <sys_update_name>sys_script_fix_404ffba1db5754508134de06f4961930</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-09-18 07:34:40</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+</record_update>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="task" label=" Note Task" max_length="40" name="x_snc_createnotes_note_task" sizeclass="1" type="collection">
+        <element label="comm" max_length="40" name="comm" type="string"/>
+        <element label="Note" max_length="40" name="note" type="string"/>
+        <element label="Note description" max_length="40" name="note_description" type="string"/>
+    </element>
+</database>
